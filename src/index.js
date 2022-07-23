@@ -325,7 +325,7 @@ const VirtualDragList = defineComponent({
         tag: headerTag,
         dataKey: 'header',
         event: '_onHeaderResized'
-      }, header) : null,
+      }, header()) : null,
       
       // list content
       h(wrapTag, {
@@ -344,7 +344,7 @@ const VirtualDragList = defineComponent({
             ...props,
             style: { ...itemStyle, ...this._getItemStyle(dataKey) },
             class: itemClass
-          }, this.$slots.item({ record, index, dataKey }))
+          }, () => this.$slots.item({ record, index, dataKey }))
           : 
           h(itemTag, {
             key: dataKey,
@@ -360,7 +360,7 @@ const VirtualDragList = defineComponent({
         tag: footerTag,
         dataKey: 'footer',
         event: '_onFooterResized'
-      }, footer) : null,
+      }, footer()) : null,
 
       // last element
       h('div', {
