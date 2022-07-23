@@ -5,10 +5,15 @@
  */
 
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('vue')) :
-  typeof define === 'function' && define.amd ? define(['vue'], factory) :
-  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.VirtualDragList = factory(global.Vue));
-})(this, (function (vue) { 'use strict';
+  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('vue'), require('@vue/composition-api/dist/vue-composition-api.mjs')) :
+  typeof define === 'function' && define.amd ? define(['vue', '@vue/composition-api/dist/vue-composition-api.mjs'], factory) :
+  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.VirtualDragList = factory(global.Vue, global.VueCompositionAPI));
+})(this, (function (Vue, VueCompositionAPI) { 'use strict';
+
+  function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
+
+  var Vue__default = /*#__PURE__*/_interopDefaultLegacy(Vue);
+  var VueCompositionAPI__default = /*#__PURE__*/_interopDefaultLegacy(VueCompositionAPI);
 
   function ownKeys(object, enumerableOnly) {
     var keys = Object.keys(object);
@@ -108,6 +113,14 @@
   function _nonIterableSpread() {
     throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
   }
+
+  function install(_vue) {
+    _vue = _vue || Vue__default["default"];
+    if (_vue && !_vue['__composition_api_installed__']) Vue__default["default"].use(VueCompositionAPI__default["default"]);
+  }
+
+  install(Vue__default["default"]);
+  Vue__default["default"].version;
 
   var VirtualProps = {
     dataSource: {
@@ -1925,7 +1938,7 @@
       }
     }
   };
-  var Items = vue.defineComponent('virtual-draglist-items', {
+  var Items = VueCompositionAPI.defineComponent({
     mixins: [observer],
     props: SlotsProps,
     render: function render(h) {
@@ -1939,7 +1952,7 @@
       }, this.$slots["default"]);
     }
   });
-  var Slots = vue.defineComponent('virtual-draglist-slots', {
+  var Slots = VueCompositionAPI.defineComponent({
     mixins: [observer],
     props: SlotsProps,
     render: function render(h) {
@@ -2020,7 +2033,7 @@
     };
   }
 
-  var VirtualDragList = vue.defineComponent('virtual-drag-list', {
+  var VirtualDragList = VueCompositionAPI.defineComponent({
     props: VirtualProps,
     data: function data() {
       return {

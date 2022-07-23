@@ -36,7 +36,7 @@ const observer = {
   }
 }
 
-export const Items = defineComponent('virtual-draglist-items', {
+export const Items = defineComponent({
   mixins: [observer],
   props: SlotsProps,
   render (h) {
@@ -50,7 +50,7 @@ export const Items = defineComponent('virtual-draglist-items', {
   }
 })
 
-export const Slots = defineComponent('virtual-draglist-slots', {
+export const Slots = defineComponent({
   mixins: [observer],
   props: SlotsProps,
   render (h) {

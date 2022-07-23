@@ -5,7 +5,7 @@ import { Range, DragState, VirtualProps } from './interface'
 import { Slots, Items } from './children'
 import { debounce, throttle } from './utils'
 
-const VirtualDragList = defineComponent('virtual-drag-list', {
+const VirtualDragList = defineComponent({
   props: VirtualProps,
   data() {
     return {
