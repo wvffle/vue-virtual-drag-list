@@ -27,7 +27,9 @@ const observer = {
   },
   methods: {
     onSizeChange () {
-      this.virtualList[this.event](this.dataKey, this.getCurrentSize())
+      if (this.virtualList[this.event]) {
+        this.virtualList[this.event](this.dataKey, this.getCurrentSize())
+      }
     },
     getCurrentSize () {
       const sizeKey = this.isHorizontal ? 'offsetWidth' : 'offsetHeight'
