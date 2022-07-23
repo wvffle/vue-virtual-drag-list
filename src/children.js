@@ -1,4 +1,4 @@
-import { defineComponent } from 'vue-demi'
+import { defineComponent, h } from 'vue-demi'
 import { SlotsProps } from './interface'
 
 const observer = {
@@ -39,7 +39,7 @@ const observer = {
 export const Items = defineComponent({
   mixins: [observer],
   props: SlotsProps,
-  render (h) {
+  render () {
     const { tag, dataKey } = this
     return h(tag, {
       key: dataKey,
@@ -53,7 +53,7 @@ export const Items = defineComponent({
 export const Slots = defineComponent({
   mixins: [observer],
   props: SlotsProps,
-  render (h) {
+  render () {
     const { tag, dataKey } = this
     return h(tag, {
       key: dataKey,

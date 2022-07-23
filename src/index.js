@@ -1,4 +1,4 @@
-import { defineComponent } from 'vue-demi'
+import { defineComponent, h } from 'vue-demi'
 import Virtual from './virtual'
 import Sortable from './sortable'
 import { Range, DragState, VirtualProps } from './interface'
@@ -308,11 +308,12 @@ const VirtualDragList = defineComponent({
     }
   },
   // --------------------------- render ------------------------------
-  render (h) {
+  render () {
     const { header, footer } = this.$slots
     const { start, end, front, behind } = this.range
     const { isHorizontal, headerTag, footerTag, itemTag, rootTag, wrapTag, itemStyle, itemClass, wrapClass } = this
     const wrapStyle = { ...this.wrapStyle, padding: isHorizontal ? `0px ${behind}px 0px ${front}px` : `${front}px 0px ${behind}px`}
+
 
     return h(rootTag, {
       ref: 'root',
@@ -341,13 +342,13 @@ const VirtualDragList = defineComponent({
         const dataKey = this._getDataKey(record)
         const props = { isHorizontal, dataKey, tag: itemTag, event: '_onItemResized', }
 
-        return this.$scopedSlots.item ? 
+        return this.$slots.item ? 
           h(Items, {
             key: dataKey,
             props: props,
             style: { ...itemStyle, ...this._getItemStyle(dataKey) },
             class: itemClass
-          }, this.$scopedSlots.item({ record, index, dataKey }))
+          }, this.$slots.item({ record, index, dataKey }))
           : 
           h(itemTag, {
             key: dataKey,
