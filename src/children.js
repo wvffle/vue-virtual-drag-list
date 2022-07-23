@@ -45,9 +45,7 @@ export const Items = defineComponent({
     const { tag, dataKey } = this
     return h(tag, {
       key: dataKey,
-      attrs: {
-        'data-key': dataKey
-      },
+      'data-key': dataKey
     }, this.$slots.default)
   }
 })
@@ -59,9 +57,7 @@ export const Slots = defineComponent({
     const { tag, dataKey } = this
     return h(tag, {
       key: dataKey,
-      attrs: {
-        role: dataKey
-      }
+      role: dataKey
     }, this.$slots.default)
   }
 })

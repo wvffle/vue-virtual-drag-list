@@ -324,17 +324,15 @@ const VirtualDragList = defineComponent({
     }, [
       // header-slot
       header ? h(Slots, {
-        props: {
-          tag: headerTag,
-          dataKey: 'header',
-          event: '_onHeaderResized'
-        }
+        tag: headerTag,
+        dataKey: 'header',
+        event: '_onHeaderResized'
       }, header) : null,
       
       // list content
       h(wrapTag, {
         ref: 'group',
-        attrs: { role: 'group' },
+        role: 'group',
         class: wrapClass,
         style: wrapStyle,
       }, this.list.slice(start, end + 1).map(record => {
@@ -345,14 +343,14 @@ const VirtualDragList = defineComponent({
         return this.$slots.item ? 
           h(Items, {
             key: dataKey,
-            props: props,
+            ...props,
             style: { ...itemStyle, ...this._getItemStyle(dataKey) },
             class: itemClass
           }, this.$slots.item({ record, index, dataKey }))
           : 
           h(itemTag, {
             key: dataKey,
-            attrs: { 'data-key': dataKey },
+            'data-key': dataKey,
             style: { ...itemStyle, height: `${this.size}px` },
             class: itemClass
           }, dataKey)
@@ -361,11 +359,9 @@ const VirtualDragList = defineComponent({
 
       // footer-slot
       footer ? h(Slots, {
-        props: {
-          tag: footerTag,
-          dataKey: 'footer',
-          event: '_onFooterResized'
-        }
+        tag: footerTag,
+        dataKey: 'footer',
+        event: '_onFooterResized'
       }, footer) : null,
 
       // last element
