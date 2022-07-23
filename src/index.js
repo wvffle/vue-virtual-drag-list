@@ -318,9 +318,7 @@ const VirtualDragList = defineComponent({
     return h(rootTag, {
       ref: 'root',
       style: { overflow: isHorizontal ? 'auto hidden' : 'hidden auto' },
-      on: {
-        '&scroll': debounce(this._handleScroll, this.delay)
-      }
+      onScroll: debounce(this._handleScroll, this.delay)
     }, [
       // header-slot
       header ? h(Slots, {
