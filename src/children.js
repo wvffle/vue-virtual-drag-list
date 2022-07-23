@@ -1,4 +1,4 @@
-import Vue from 'vue'
+import { defineComponent } from 'vue-demi'
 import { SlotsProps } from './interface'
 
 const observer = {
@@ -36,7 +36,7 @@ const observer = {
   }
 }
 
-export const Items = Vue.component('virtual-draglist-items', {
+export const Items = defineComponent('virtual-draglist-items', {
   mixins: [observer],
   props: SlotsProps,
   render (h) {
@@ -50,7 +50,7 @@ export const Items = Vue.component('virtual-draglist-items', {
   }
 })
 
-export const Slots = Vue.component('virtual-draglist-slots', {
+export const Slots = defineComponent('virtual-draglist-slots', {
   mixins: [observer],
   props: SlotsProps,
   render (h) {

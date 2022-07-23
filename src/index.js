@@ -1,11 +1,11 @@
-import Vue from 'vue'
+import { defineComponent } from 'vue-demi'
 import Virtual from './virtual'
 import Sortable from './sortable'
 import { Range, DragState, VirtualProps } from './interface'
 import { Slots, Items } from './children'
 import { debounce, throttle } from './utils'
 
-const VirtualDragList = Vue.component('virtual-drag-list', {
+const VirtualDragList = defineComponent('virtual-drag-list', {
   props: VirtualProps,
   data() {
     return {

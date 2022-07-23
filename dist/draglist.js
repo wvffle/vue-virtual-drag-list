@@ -8,11 +8,7 @@
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('vue')) :
   typeof define === 'function' && define.amd ? define(['vue'], factory) :
   (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.VirtualDragList = factory(global.Vue));
-})(this, (function (Vue) { 'use strict';
-
-  function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
-
-  var Vue__default = /*#__PURE__*/_interopDefaultLegacy(Vue);
+})(this, (function (vue) { 'use strict';
 
   function ownKeys(object, enumerableOnly) {
     var keys = Object.keys(object);
@@ -1929,7 +1925,7 @@
       }
     }
   };
-  var Items = Vue__default["default"].component('virtual-draglist-items', {
+  var Items = vue.defineComponent('virtual-draglist-items', {
     mixins: [observer],
     props: SlotsProps,
     render: function render(h) {
@@ -1943,7 +1939,7 @@
       }, this.$slots["default"]);
     }
   });
-  var Slots = Vue__default["default"].component('virtual-draglist-slots', {
+  var Slots = vue.defineComponent('virtual-draglist-slots', {
     mixins: [observer],
     props: SlotsProps,
     render: function render(h) {
@@ -2024,7 +2020,7 @@
     };
   }
 
-  var VirtualDragList = Vue__default["default"].component('virtual-drag-list', {
+  var VirtualDragList = vue.defineComponent('virtual-drag-list', {
     props: VirtualProps,
     data: function data() {
       return {
